@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/normalize.css" />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <title>Accessible images</title>
+  </head>
+  <body>
+    <h1>Images</h1>
+
+    <picture>
+      <img
+        src="https://mdn.github.io/learning-area/accessibility/html/dinosaur.png"
+      />
+    </picture>
+
+    <picture>
+      <img
+        src="https://mdn.github.io/learning-area/accessibility/html/dinosaur.png"
+        alt="A red Tyrannosaurus Rex: A two legged dinosaur standing upright like a human, with small arms, and a large head with lots of sharp teeth."
+      />
+    </picture>
+
+    <picture>
+      <img
+        src="https://mdn.github.io/learning-area/accessibility/html/dinosaur.png"
+        alt="A red Tyrannosaurus Rex: A two legged dinosaur standing upright like a human, with small arms, and a large head with lots of sharp teeth."
+        title="The Mozilla red dinosaur"
+      />
+    </picture>
+    <picture>
+      <img
+        src="https://mdn.github.io/learning-area/accessibility/html/dinosaur.png"
+        aria-labelledby="dino-label"
+      />
+      <p id="dino-label">
+        The Mozilla red Tyrannosaurus Rex: A two legged dinosaur standing
+        upright like a human, with small arms, and a large head with lots of
+        sharp teeth.
+      </p>
+    </picture>
+  </body>
+</html>

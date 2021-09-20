@@ -13,6 +13,22 @@ body {
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
 p {
   max-width: 80ch;
+}
+
+picture {
+  display: block;
+  margin-bottom: 1.25rem;
+  max-width: 300px;
+}
+
+#dino-label {
+  visibility: hidden;
 }
