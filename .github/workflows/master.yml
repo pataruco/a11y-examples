@@ -1,0 +1,29 @@
+name: master
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  test-a11y:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Set Node version 📦
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          check-latest: true
+
+      - name: Install 🏗
+        run: |
+          yarn
+      - name: Accessibility tests
+        run: |
+          yarn test:a11y

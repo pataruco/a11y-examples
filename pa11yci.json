@@ -1,0 +1,8 @@
+{
+  "urls": [
+    "http://localhost:5000",
+    "http://localhost:5000/good-example",
+    "http://localhost:5000/interactive-example",
+    "http://localhost:5000/multimedia"
+  ]
+}
