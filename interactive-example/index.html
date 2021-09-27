@@ -6,7 +6,118 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="../styles/normalize.css" />
     <link rel="stylesheet" href="./styles/main.css" />
+
     <title>FEWD | Vanilla JS accordion</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: sans-serif;
+        padding: 1rem;
+      }
+
+      header {
+        margin: auto;
+        max-width: 1000px;
+        width: 75%;
+      }
+
+      dl {
+        margin: 0 auto;
+        max-width: 1000px;
+        width: 75%;
+      }
+
+      dt {
+        align-content: center;
+        border: 1px solid grey;
+        border-bottom: none;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 1em;
+      }
+
+      dt:last-of-type {
+        border-bottom: 1px solid grey;
+      }
+
+      button {
+        border: none;
+        display: block;
+        padding: 1em;
+        outline: none;
+      }
+
+      span {
+        border: 1px solid;
+        display: block;
+        width: 1.5rem;
+        transition: all linear 0.1s;
+      }
+
+      span:first-of-type {
+        transform-origin: 100%;
+        transform: rotate(45deg) translate3d(1px, 16px, 0);
+      }
+
+      span:last-of-type {
+        transform-origin: 0;
+        transform: rotate(-45deg) translate3d(2px, 16px, 0);
+      }
+
+      dd {
+        max-height: 0;
+        margin: 0;
+        overflow: hidden;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      dt.accordion-open {
+        background-color: black;
+        color: white;
+      }
+
+      dt.accordion-open button {
+        background-color: black;
+      }
+
+      dt.accordion-open span {
+        border-color: white;
+      }
+
+      dt.accordion-open + dd {
+        border: 1px solid grey;
+        border-bottom: none;
+        max-height: 100vh;
+        padding: 1em;
+        transition: max-height ease-in 0.2s;
+      }
+
+      dt.accordion-open:last-of-type + dd {
+        border-top: none;
+        border-bottom: 1px solid grey;
+      }
+
+      dt.accordion-open + dd p {
+        margin: 1em 0;
+      }
+
+      dt.accordion-open span:first-of-type {
+        transform-origin: 50%;
+        transform: rotate(45deg) translate3d(0px, 2px, 0);
+      }
+
+      dt.accordion-open span:last-of-type {
+        transform-origin: 50%;
+        transform: rotate(-45deg) translate3d(0px, -1px, 0);
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -212,6 +323,47 @@
         </article>
       </dd>
     </dl>
-    <script src="./styles/main.css"></script>
+    <script>
+      const accordionTitles = Array.from(document.querySelectorAll('dt'));
+
+      accordionTitles.forEach((accordionTitle) =>
+        accordionTitle.addEventListener('click', openAccordion),
+      );
+
+      function closeAllAccordionsExcept(element) {
+        const index = accordionTitles.indexOf(element);
+        const filteredAccordionTitles = accordionTitles.filter(
+          (accordionTitle, i) => {
+            if (i !== index) {
+              return accordionTitle;
+            }
+          },
+        );
+
+        filteredAccordionTitles.forEach((accordionTitle) => {
+          accordionTitle.setAttribute('aria-expanded', false);
+          accordionTitle.classList.remove('accordion-open');
+        });
+      }
+
+      function openAccordion(event) {
+        const currentTarget = event.currentTarget;
+
+        let target;
+        if (currentTarget.nodeName === 'DT') {
+          target = currentTarget;
+        } else {
+          target = currentTarget.parentNode;
+        }
+
+        closeAllAccordionsExcept(target);
+        target.classList.toggle('accordion-open');
+
+        if (target.classList.contains('accordion-open')) {
+          return target.setAttribute('aria-expanded', true);
+        }
+        return target.setAttribute('aria-expanded', false);
+      }
+    </script>
   </body>
 </html>
