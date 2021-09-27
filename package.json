@@ -22,7 +22,7 @@
     "run-pa11y": "yarn pa11y-ci --config ./pa11yci.json"
   },
   "lint-staged": {
-    "*.{js,json,yml,md}": [
+    "*.{js,json,yml,md,html,css,scss}": [
       "yarn prettier --write"
     ],
     "*.{ts,tsx,js,jsx}": [
