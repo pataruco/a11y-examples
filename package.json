@@ -7,6 +7,7 @@
   "license": "MIT",
   "devDependencies": {
     "eslint": "^7.32.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
     "husky": "^7.0.2",
     "lint-staged": "^11.1.2",
     "prettier": "^2.4.1",
@@ -20,7 +21,7 @@
     "*.{js,json,yml,md}": [
       "yarn prettier --write"
     ],
-    "*.{ts,tsx}": [
+    "*.{ts,tsx,js,jsx}": [
       "eslint --fix",
       "prettier --write"
     ]
