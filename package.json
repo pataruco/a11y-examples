@@ -1,0 +1,28 @@
+{
+  "name": "a11y-examples",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:pataruco/a11y-examples.git",
+  "author": "Pedro Martin <patatuco@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
+    "prettier": "^2.4.1",
+    "serve": "^12.0.1"
+  },
+  "scripts": {
+    "serve": "yarn serve",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,json,yml,md}": [
+      "yarn prettier --write"
+    ],
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
+}
