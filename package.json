@@ -1,0 +1,33 @@
+{
+  "name": "a11y-examples",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:pataruco/a11y-examples.git",
+  "author": "Pedro Martin <patatuco@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint": "^7.32.0",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
+    "pa11y-ci": "^2.4.2",
+    "prettier": "^2.4.1",
+    "serve": "^12.0.1",
+    "start-server-and-test": "^1.14.0"
+  },
+  "scripts": {
+    "start": "yarn serve",
+    "prepare": "husky install",
+    "test:a11y": "start-server-and-test serve 5000 run-pa11y",
+    "run-pa11y": "yarn pa11y-ci --config ./pa11yci.json"
+  },
+  "lint-staged": {
+    "*.{js,json,yml,md}": [
+      "yarn prettier --write"
+    ],
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
+}
